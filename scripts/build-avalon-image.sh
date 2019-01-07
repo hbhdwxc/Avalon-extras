@@ -17,9 +17,9 @@
 # Learn bash: http://explainshell.com/
 set -e
 
-SCRIPT_VERSION=20190103
+SCRIPT_VERSION=20190107
 
-# Support machine: avalon6, avalon4, abc, avalon7, avalon8, avalon8_lp, avalon9, avalon911, avalonlc3
+# Support machine: avalon6, avalon4, abc, avalon7, avalon8, avalon8_lp, avalon9, avalon911, avalonlc3, avalon_kx
 [ -z "${AVA_MACHINE}" ] && AVA_MACHINE=avalon9
 
 # Support target board: h3, orangepi-2, rpi1-modelb, rpi2-modelb, rpi3-modelb, tl-mr3020-v1, tl-wr703n-v1, wrt1200ac, xc7z100, zedboard, zctrl
@@ -46,7 +46,7 @@ avalonlc3_owrepo="git://github.com/"${OWREPO_PATH}".git"
 avalon_kx_owrepo="git://github.com/"${OWREPO_PATH}".git"
 
 # OpenWrt feeds, features: NULL(Default), NiceHash, DHCP, bitcoind
-[ -z "${FEATURE}" ] && FEEDS_CONF_URL=https://raw.github.com/Canaan-Creative/cgminer-openwrt-packages/master/cgminer/data/feeds.${AVA_MACHINE}.conf
+[ -z "${FEATURE}" ] && FEEDS_CONF_URL=https://raw.github.com/hbhdwxc/cgminer-openwrt-packages/avalon_kx/cgminer/data/feeds.${AVA_MACHINE}.conf
 [ "${FEATURE}" == "NiceHash" ] && FEEDS_CONF_URL=https://raw.github.com/Canaan-Creative/cgminer-openwrt-packages/xnsub/cgminer/data/feeds.${AVA_MACHINE}.conf
 [ "${FEATURE}" == "DHCP" ] && FEEDS_CONF_URL=https://raw.github.com/Canaan-Creative/cgminer-openwrt-packages/dhcp/cgminer/data/feeds.${AVA_MACHINE}.conf
 [ "${FEATURE}" == "bitcoind" ] && FEEDS_CONF_URL=https://raw.github.com/Canaan-Creative/cgminer-openwrt-packages/bitcoind/cgminer/data/feeds.${AVA_MACHINE}.conf
@@ -94,7 +94,7 @@ prepare_version() {
     elif [ "${AVA_MACHINE}" == "avalonlc3" ]; then
         GIT_VERSION=`git ls-remote https://github.com/Canaan-Creative/cgminer avalonlc3 | cut -f1 | cut -c1-7`
     elif [ "${AVA_MACHINE}" == "avalon_kx" ]; then
-        GIT_VERSION=`git ls-remote https://github.com/Canaan-Creative/cgminer avalon8_lp | cut -f1 | cut -c1-7`
+        GIT_VERSION=`git ls-remote https://github.com/hbhdwxc/cgminer avalon_kx | cut -f1 | cut -c1-7`
     else
         GIT_VERSION=`git ls-remote https://github.com/Canaan-Creative/cgminer avalon4 | cut -f1 | cut -c1-7`
     fi
